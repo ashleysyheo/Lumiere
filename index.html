@@ -23,7 +23,7 @@
         </script>
         <script src="./script.js"></script>
         <script type="text/javascript" src="Tonejs-Instruments.js"></script>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.70/Tone.js'></script>
+        <script type="text/javascript" src="Tone.js"></script>
         <script>
             const whiteKeysNotes = {
                 z: 'C2',
@@ -65,7 +65,13 @@
                 baseUrl: "/samples/"
             })
 
-            pianoSound.toDestination();
+            Tone.Buffer.on('load', function() {
+                pianoSound.toMaster();
+            })
+
+            Tone.Buffer.on('error', function() {
+                document.querySelector("#loading").innerHTML = "I'm sorry, there has been an error loading the samples. This demo works best on on the most up-to-date version of Chrome.";
+            })
 
             window.addEventListener('keydown', function (e) {
 
