@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 2rem;
+    overflow: hidden;
+    background-color: black;
+}
+
+#renderSurface {
+    width: 100vw;
+    height: 100vh;
+}
+
+.piano {
+    position: absolute;
+    z-index: 999;
+    height: 33rem;
+    width: 100vw;
+    cursor: pointer;
+}
+
+.white-key {
+    display: inline-block;
+    width: calc(100vw / 17);
+    height: 30rem;
+    background-color: white;
+    border: 1px solid gray;
+    border-bottom: 2px solid gray;
+    opacity: 30%;
+}
+
+.white-key:hover {
+    opacity: 80%;
+}
+
+.white-comp-key {
+    margin-top: 25rem;
+    text-align: center;
+}
+
+.black-key {
+    position: absolute;
+    top: 0;
+    width: calc(100vw / 34);
+    height: 18rem;
+    background-color: black;
+}
+
+.black-key:hover {
+ background-color: gray;
+}
+
+.black-comp-key {
+    color: white;
+    margin-top: 14rem;
+    text-align: center;
+}
+
+.black-key1 {
+    left: calc((100vw / 17) - (100vw / 68));
+}
+
+.black-key2 {
+    left: calc((100vw / 17) * 2 - (100vw / 68));
+}
+
+.black-key3 {
+    left: calc((100vw / 17) * 4 - (100vw / 68));
+}
+
+.black-key4 {
+    left: calc((100vw / 17) * 5 - (100vw / 68));
+}
+
+.black-key5 {
+    left: calc((100vw / 17) * 6 - (100vw / 68));
+}
+
+.black-key6 {
+    left: calc((100vw / 17) * 8 - (100vw / 68));
+}
+
+.black-key7 {
+    left: calc((100vw / 17) * 9 - (100vw / 68));
+}
+
+.black-key8 {
+    left: calc((100vw / 17) * 11 - (100vw / 68));
+}
+
+.black-key9 {
+    left: calc((100vw / 17) * 12 - (100vw / 68));
+}
+
+.black-key10 {
+    left: calc((100vw / 17) * 13 - (100vw / 68));
+}
+
+.black-key11 {
+    left: calc((100vw / 17) * 15 - (100vw / 68));
+}
+
+.black-key12 {
+    left: calc((100vw / 17) * 16 - (100vw / 68));
+}

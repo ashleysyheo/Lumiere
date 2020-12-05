@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href='./favicon.ico' />
+        <title>Lumière</title>
+        <link rel="stylesheet" href="./style.css" />
+        <script src="lib/fluid.js"></script>
+    </head>
+    <body>
+        <main>
+            <div class='piano'></div>
+            <canvas id="renderSurface"></canvas>
+        </main>
+
+        <script>
+            const canvas = document.getElementById('renderSurface');
+            const fluid = new Fluid(canvas);
+
+            fluid.activate();
+        </script>
+        <script src="./script.js"></script>
+        <script type="text/javascript" src="Tonejs-Instruments.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.70/Tone.js'></script>
+        <script>
+            const whiteKeysNotes = {
+                z: 'C2',
+                x: 'D2', 
+                c: 'E2', 
+                v: 'F2', 
+                b: 'G2', 
+                n: 'A2', 
+                m: 'B2', 
+                q: 'C3', 
+                w: 'D3',
+                e: 'E3', 
+                r: 'F3',
+                t: 'G3',
+                y: 'A3', 
+                u: 'B3', 
+                i: 'C4', 
+                o: 'D4',
+                p: 'E4',
+            };
+
+            const blackKeysNotes = {
+                s: 'C#2',
+                d: 'D#2', 
+                g: 'F#2', 
+                h: 'G#2', 
+                j: 'A#2', 
+                2: 'C#3', 
+                3: 'D#3',
+                5: 'F#3',
+                6: 'G#3',
+                7: 'A#3', 
+                9: 'C#2', 
+                0: 'D#2',
+            };
+
+            let pianoSound = SampleLibrary.load({
+                instruments: 'piano',
+                baseUrl: "/samples/"
+            })
+
+            pianoSound.toDestination();
+
+            window.addEventListener('keydown', function (e) {
+
+                for (const [key, value] of Object.entries(whiteKeysNotes)) {
+                    if (e.key === key) {
+                        pianoSound.triggerAttackRelease(value, 2);
+                    }
+                }
+
+                for (const [key, value] of Object.entries(blackKeysNotes)) {
+                    if (e.key === key) {
+                        pianoSound.triggerAttackRelease(value, 2);
+                    }
+                }
+            });
+        </script>
+    </body>
+
+</html>
