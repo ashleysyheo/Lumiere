@@ -13,12 +13,105 @@ body {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 2rem;
     overflow: hidden;
-    background-color: black;
+    background-color: white;
 }
 
 #renderSurface {
     width: 100vw;
     height: 100vh;
+}
+
+#loading {
+    position: absolute;
+    z-index: 9999;
+    opacity: 1;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    background: linear-gradient(0deg, #ff0041, #000000);
+    background-size: 400% 400%;
+    animation: AnimationName 8s ease 1s forwards;
+    transition: all 1s ease-in;
+}
+
+#loading.fade-out {
+    opacity: 0;
+}
+
+@keyframes AnimationName {
+    from {background-position:50% 0%}
+    to {background-position:51% 100%}
+}
+
+.keys {
+    position: relative;
+    width: 44rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.key {
+    opacity: 0;
+    position: relative;
+    width: 10rem;
+    height: calc((100vh - 2rem) / 4 );
+    background-color: white;
+    box-shadow: 1rem 1rem;
+}
+
+.key1 {
+    left: 33rem;
+    animation: opacity 0.2s ease 8.9s forwards, pianoPress 0.5s ease 9.2s forwards;
+}
+
+.key2{
+    left: 22rem;
+    animation: opacity 0.2s ease 8.1s forwards, pianoPress 0.5s ease 8.4s forwards;
+}
+
+.key3{
+    left: 11rem;
+    animation: opacity 0.2s ease 7.3s forwards, pianoPress 0.5s ease 7.6s forwards;
+}
+
+.key4 {
+    animation: opacity 0.2s ease 6.5s forwards, pianoPress 0.5s ease 6.8s forwards;
+}
+
+@keyframes opacity{
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes invisible {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+
+@keyframes pianoPress{
+    from {
+        transform: translate(0, 0);
+        box-shadow: 1rem 1rem;
+    }
+    to {
+        transform: translate(1rem, 1rem);
+        box-shadow: 0 0;
+    }
+}
+
+#container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+
+    /* animation: opacity 1s ease 10s forwards; */
+    transition: all 1s ease-in;
+}
+
+#container.fade-in {
+    opacity: 1;
 }
 
 .piano {

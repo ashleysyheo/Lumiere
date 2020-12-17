@@ -11,8 +11,18 @@
     </head>
     <body>
         <main>
-            <div class='piano'></div>
-            <canvas id="renderSurface"></canvas>
+            <div id="loading">
+                <div class="keys">
+                    <div class="key key1"></div>
+                    <div class="key key2"></div>
+                    <div class="key key3"></div>
+                    <div class="key key4"></div>
+                </div>
+            </div>
+            <div id='container'>
+                <div class='piano'></div>
+                <canvas id="renderSurface"></canvas>
+            </div>
         </main>
 
         <script>
@@ -66,6 +76,10 @@
             })
 
             Tone.Buffer.on('load', function() {
+                setTimeout(() => {
+                    document.querySelector("#loading").classList.add('fade-out');
+                }, 10500);
+
                 pianoSound.toMaster();
             })
 
